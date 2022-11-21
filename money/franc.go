@@ -4,14 +4,15 @@ type Franc struct {
 	Money
 }
 
-func NewFranc(a int) *Franc {
+func NewFranc(amount int, name string) *Franc {
 	return &Franc{
 		Money{
-			amount: a,
+			amount: amount,
+			name:   name,
 		},
 	}
 }
 
 func (f *Franc) Times(multiplier int) *Franc {
-	return NewFranc(f.amount * multiplier)
+	return NewFranc(f.amount*multiplier, f.name)
 }
