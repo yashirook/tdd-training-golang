@@ -9,6 +9,6 @@ func (d *Doller) times(multipulier int) Doller {
 }
 
 // 【Check】TDD本では引数をObject型にしていた
-func (d *Doller) equals(doller *Doller) bool {
+func (d *Doller) equals(doller Doller) bool {
 	return d.amount == doller.amount
 }
