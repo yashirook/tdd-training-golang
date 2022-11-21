@@ -9,11 +9,8 @@ import (
 func TestMultiplication(t *testing.T) {
 	five := Doller{5}
 
-	product := five.times(2)
-	assert.Equal(t, Doller{10}, product)
-
-	product = five.times(3)
-	assert.Equal(t, Doller{15}, product)
+	assert.Equal(t, Doller{10}, five.times(2))
+	assert.Equal(t, Doller{15}, five.times(3))
 }
 
 func TestEquality(t *testing.T) {

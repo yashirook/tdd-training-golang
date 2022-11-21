@@ -1,26 +1,19 @@
 package main
 
-type Doller struct {
+type Money struct {
 	amount int
 }
 
-func (d *Doller) times(multipulier int) Doller {
-	return Doller{d.amount * multipulier}
+type Doller = Money
+type Franc = Money
+
+func (m *Money) times(multipulier int) Money {
+	return Money{m.amount * multipulier}
 }
 
-// 【Check】TDD本では引数をObject型にしていた
-func (d *Doller) equals(doller Doller) bool {
-	return d.amount == doller.amount
+// 【Check】TDD本では引数をObject型にしていたことについて話す
+func (m *Money) equals(money Money) bool {
+	return m.amount == money.amount
 }
 
-type Franc struct {
-	amount int
-}
-
-func (f *Franc) times(multiplier int) Franc {
-	return Franc{amount: f.amount * multiplier}
-}
-
-func (f *Franc) equals(franc Franc) bool {
-	return f.amount == franc.amount
-}
+// 【Check】抽象化を考えるフェーズについて話す
