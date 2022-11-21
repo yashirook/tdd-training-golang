@@ -5,5 +5,5 @@ type Doller struct {
 }
 
 func (d *Doller) times(multipulier int) {
-	d.amount = multipulier * d.amount
+	d.amount = d.amount * multipulier
 }
