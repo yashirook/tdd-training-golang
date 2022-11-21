@@ -12,3 +12,15 @@ func (d *Doller) times(multipulier int) Doller {
 func (d *Doller) equals(doller Doller) bool {
 	return d.amount == doller.amount
 }
+
+type Franc struct {
+	amount int
+}
+
+func (f *Franc) times(multiplier int) Franc {
+	return Franc{amount: f.amount * multiplier}
+}
+
+func (f *Franc) equals(franc Franc) bool {
+	return f.amount == franc.amount
+}
