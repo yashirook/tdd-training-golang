@@ -9,8 +9,8 @@ import (
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
 
-	assert.Equal(t, &Money{amount: 10, name: "Dollar"}, five.Times(2))
-	assert.Equal(t, &Money{amount: 15, name: "Dollar"}, five.Times(3))
+	assert.Equal(t, &Money{amount: 10, currency: "USD"}, five.Times(2))
+	assert.Equal(t, &Money{amount: 15, currency: "USD"}, five.Times(3))
 }
 
 func TestEquality(t *testing.T) {
@@ -22,8 +22,8 @@ func TestEquality(t *testing.T) {
 
 func TestFrancMultiplication(t *testing.T) {
 	five := NewFranc(5)
-	assert.Equal(t, &Money{amount: 10, name: "Franc"}, five.Times(2))
-	assert.Equal(t, &Money{amount: 15, name: "Franc"}, five.Times(3))
+	assert.Equal(t, &Money{amount: 10, currency: "CHF"}, five.Times(2))
+	assert.Equal(t, &Money{amount: 15, currency: "CHF"}, five.Times(3))
 }
 
 func TestFrancEquality(t *testing.T) {
@@ -31,4 +31,9 @@ func TestFrancEquality(t *testing.T) {
 	assert.True(t, five.Equals(NewFranc(5)))
 	assert.False(t, five.Equals(NewFranc(6)))
 	assert.False(t, five.Equals(NewDollar(5)))
+}
+
+func TestCurrency(t *testing.T) {
+	assert.Equal(t, "USD", NewDollar(1).Currency())
+	assert.Equal(t, "CHF", NewFranc(1).Currency())
 }
