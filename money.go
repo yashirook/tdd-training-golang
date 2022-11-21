@@ -7,3 +7,8 @@ type Doller struct {
 func (d *Doller) times(multipulier int) Doller {
 	return Doller{d.amount * multipulier}
 }
+
+// 【Check】TDD本では引数をObject型にしていた
+func (d *Doller) equals(doller *Doller) bool {
+	return d.amount == doller.amount
+}

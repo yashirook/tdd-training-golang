@@ -17,5 +17,7 @@ func TestMultiplication(t *testing.T) {
 }
 
 func TestEquality(t *testing.T) {
-	assert.True(t, &Doller{5}.equals(&Doller{5}))
+	five := &Doller{5}
+	assert.True(t, five.equals(&Doller{5}))
+	assert.False(t, five.equals(&Doller{6}))
 }
