@@ -46,3 +46,10 @@ func (m *Money) Amount() int {
 func (m *Money) Currency() string {
 	return m.currency
 }
+
+func (m *Money) Plus(p Paymenter) *Money {
+	return &Money{
+		amount:   m.Amount() + p.Amount(),
+		currency: m.Currency(),
+	}
+}
