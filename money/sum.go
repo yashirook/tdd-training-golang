@@ -12,7 +12,7 @@ func NewSum(augend, addend Money) Sum {
 	}
 }
 
-func (s Sum) Reduce(currency string) Money {
+func (s Sum) Reduce(bank Bank, currency string) Money {
 	amount := s.augend.amount + s.addend.amount
 	return NewMoney(amount, currency)
 }
