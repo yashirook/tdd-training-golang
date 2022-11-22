@@ -10,6 +10,13 @@ type Money struct {
 	currency string
 }
 
+func NewMoney(amount int, currency string) *Money {
+	return &Money{
+		amount:   amount,
+		currency: currency,
+	}
+}
+
 func NewDollar(amount int) *Money {
 	return &Money{
 		amount:   amount,
@@ -47,9 +54,6 @@ func (m *Money) Currency() string {
 	return m.currency
 }
 
-func (m *Money) Plus(p Paymenter) *Money {
-	return &Money{
-		amount:   m.Amount() + p.Amount(),
-		currency: m.Currency(),
-	}
+func (m *Money) Plus(p Paymenter) Expression {
+	return NewMoney(m.Amount()+p.Amount(), m.currency)
 }
