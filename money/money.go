@@ -52,3 +52,7 @@ func (m Money) Currency() string {
 func (m Money) Plus(added Money) Expression {
 	return NewSum(m, added)
 }
+
+func (m Money) Reduce(to string) Money {
+	return m
+}
