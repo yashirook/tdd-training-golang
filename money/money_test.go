@@ -47,3 +47,10 @@ func TestReduceSum(t *testing.T) {
 	result := bank.Reduce(sum, "USD")
 	assert.Equal(t, NewDollar(7), result)
 }
+
+func TestReduceMoney(t *testing.T) {
+	bank := Bank{}
+	result := bank.Reduce(NewDollar(1), "USD")
+
+	assert.Equal(t, NewDollar(1), result)
+}
