@@ -1,31 +1,26 @@
 package money
 
-type Paymenter interface {
-	Amount() int
-	Currency() string
-}
-
 type Money struct {
 	amount   int
 	currency string
 }
 
-func NewMoney(amount int, currency string) *Money {
-	return &Money{
+func NewMoney(amount int, currency string) Money {
+	return Money{
 		amount:   amount,
 		currency: currency,
 	}
 }
 
-func NewDollar(amount int) *Money {
-	return &Money{
+func NewDollar(amount int) Money {
+	return Money{
 		amount:   amount,
 		currency: "USD",
 	}
 }
 
-func NewFranc(amount int) *Money {
-	return &Money{
+func NewFranc(amount int) Money {
+	return Money{
 		amount:   amount,
 		currency: "CHF",
 	}
@@ -33,12 +28,12 @@ func NewFranc(amount int) *Money {
 
 // 【Check】TDD本では引数をObject型にしていたことについて話す
 
-func (m *Money) Equals(p Paymenter) bool {
-	return m.amount == p.Amount() && m.Currency() == p.Currency()
+func (m Money) Equals(target Money) bool {
+	return m.amount == target.amount && m.currency == target.currency
 }
 
-func (m *Money) Times(multiplier int) *Money {
-	return &Money{
+func (m Money) Times(multiplier int) Money {
+	return Money{
 		amount:   m.amount * multiplier,
 		currency: m.currency,
 	}
@@ -46,14 +41,14 @@ func (m *Money) Times(multiplier int) *Money {
 
 // 【Check】抽象化を考えるフェーズについて話す
 
-func (m *Money) Amount() int {
+func (m Money) Amount() int {
 	return m.amount
 }
 
-func (m *Money) Currency() string {
+func (m Money) Currency() string {
 	return m.currency
 }
 
-func (m *Money) Plus(p Paymenter) Expression {
-	return NewMoney(m.Amount()+p.Amount(), m.currency)
+func (m Money) Plus(added Money) Expression {
+	return NewSum(m, added)
 }

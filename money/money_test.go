@@ -9,8 +9,8 @@ import (
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
 
-	assert.Equal(t, &Money{amount: 10, currency: "USD"}, five.Times(2))
-	assert.Equal(t, &Money{amount: 15, currency: "USD"}, five.Times(3))
+	assert.Equal(t, Money{amount: 10, currency: "USD"}, five.Times(2))
+	assert.Equal(t, Money{amount: 15, currency: "USD"}, five.Times(3))
 }
 
 func TestEquality(t *testing.T) {
@@ -31,4 +31,12 @@ func TestSimpleAddition(t *testing.T) {
 	var bank *Bank = &Bank{}
 	reduced := bank.Reduce(sum, "USD")
 	assert.Equal(t, NewDollar(10), reduced)
+}
+
+func TestPlusReturnSum(t *testing.T) {
+	five := NewDollar(5)
+	result := five.Plus(five)
+	sum := result.(Sum)
+	assert.Equal(t, five, sum.augend)
+	assert.Equal(t, five, sum.addend)
 }
