@@ -32,7 +32,7 @@ func (m Money) Equals(target Money) bool {
 	return m.amount == target.amount && m.currency == target.currency
 }
 
-func (m Money) Times(multiplier int) Money {
+func (m Money) Times(multiplier int) Expression {
 	return Money{
 		amount:   m.amount * multiplier,
 		currency: m.currency,
@@ -49,7 +49,7 @@ func (m Money) Currency() string {
 	return m.currency
 }
 
-func (m Money) Plus(added Money) Expression {
+func (m Money) Plus(added Expression) Expression {
 	return NewSum(m, added)
 }
 
