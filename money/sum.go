@@ -23,6 +23,7 @@ func (s Sum) Plus(added Expression) Expression {
 
 func (s Sum) Times(multiplier int) Expression {
 	return Sum{
-		augend: s.augend * multiplier,
+		augend: s.augend.Times(multiplier),
+		addend: s.addend.Times(multiplier),
 	}
 }
