@@ -48,6 +48,18 @@ func TestReduceSum(t *testing.T) {
 	assert.Equal(t, NewDollar(7), result)
 }
 
+func TestSumPlusMoney(t *testing.T) {
+	fiveBacks := Expression(NewDollar(5))
+	tenFrancs := Expression(NewFranc(10))
+
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
+
+	sum := NewSum(fiveBacks, tenFrancs).Plus(fiveBacks)
+	result := bank.Reduce(sum, "USD")
+	assert.Equal(t, NewDollar(15), result)
+}
+
 func TestReduceMoney(t *testing.T) {
 	bank := NewBank()
 	result := bank.Reduce(NewDollar(1), "USD")
